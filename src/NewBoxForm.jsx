@@ -1,22 +1,23 @@
 import { useState } from "react";
 
 function NewBoxForm({ addBox }) {
-  const defaultData = { height: "", width: "", backgroundColor: "" };
+  const defaultData = { height: "", width: "", backgroundColor: "", valid: true};
   const [formData, setFormData] = useState(defaultData);
 
   function handleSubmit(evt) {
     evt.preventDefault();
     let data = formData;
-    if (!data.height.endsWith("px")) {
+    if(isNaN(data.height)|| isNaN(data.width)){
+      setFormData(d => ({...d, valid: false}));
+    } else {
       data.height += "px";
-    }
-    if (!data.width.endsWith("px")) {
       data.width += "px";
+      addBox(data);
+      setFormData(defaultData);
     }
+   
     //pattern to create the key here
-    
-    addBox(data);
-    setFormData(defaultData);
+   
   }
 
   function handleChange(evt) {
@@ -27,28 +28,29 @@ function NewBoxForm({ addBox }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label forHTML="height">height:</label>
+        {!formData.valid && <div class="Box-error">Invalid form data, please submit numbers for height and width</div>}
+        <label htmlFor="height">height:</label>
         <input
           id="height"
           name="height"
           value={formData.height}
-          inputType="text"
+          type="text"
           onChange={handleChange}
         />
-        <label forHTML="width">width:</label>
+        <label htmlFor="width">width:</label>
         <input
           id="width"
           name="width"
           value={formData.width}
-          inputType="text"
+          type="text"
           onChange={handleChange}
         />
-        <label forHTML="backgroundColor">background color:</label>
+        <label htmlFor="backgroundColor">background color:</label>
         <input
           id="backgroundColor"
           name="backgroundColor"
           value={formData.backgroundColor}
-          inputType="text"
+          type="text"
           onChange={handleChange}
         />
         <button type="submit">Submit</button>

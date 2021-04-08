@@ -18,7 +18,6 @@ function BoxList() {
   return (
     <div>
       <NewBoxForm addBox={addBox} />
-      <ul>
       {boxList.map(box => (
         <Box
           height={box.height}
@@ -26,7 +25,6 @@ function BoxList() {
           backgroundColor={box.backgroundColor}
           removeBox={() => removeBox(box)}/>
       ))}
-      </ul>
     </div>
   );
 }

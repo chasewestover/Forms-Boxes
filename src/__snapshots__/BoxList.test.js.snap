@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` test BoxList renders correctly BoxList snapshot test 1`] = `
+<div>
+  <div>
+    <div>
+      <form>
+        <label
+          for="height"
+        >
+          height:
+        </label>
+        <input
+          id="height"
+          name="height"
+          type="text"
+          value=""
+        />
+        <label
+          for="width"
+        >
+          width:
+        </label>
+        <input
+          id="width"
+          name="width"
+          type="text"
+          value=""
+        />
+        <label
+          for="backgroundColor"
+        >
+          background color:
+        </label>
+        <input
+          id="backgroundColor"
+          name="backgroundColor"
+          type="text"
+          value=""
+        />
+        <button
+          type="submit"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+`;
